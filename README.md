@@ -1,2 +1,2 @@
 # CodeStore
-存放各种代码组件
+A repository that stores code components
