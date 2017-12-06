@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>this.state</title>
+    <script src="../js/15.4.2/react.min.js"></script>
+    <script src="../js/15.4.2/react-dom.min.js"></script>
+    <script src="../js/15.4.2/babel.min.js"></script>
+</head>
+<body>
+    <div id="example1"> </div>
+    <div id="example2"> </div>
+    <script type="text/babel">
+        var LikeButton = React.createClass({
+            getInitialState: function () {
+                return {liked: false};
+            },
+            handleClick: function (event) {
+                this.setState({liked: !this.state.liked});
+            },
+            render: function () {
+                var text = this.state.liked ? 'like' : 'haven\'t liked';
+                return (
+                    <p onClick={this.handleClick}>
+                        You {text} this. Click to toggle.
+                    </p>
+                );
+            }
+        });
+        ReactDOM.render(
+            <LikeButton />,
+            document.getElementById('example1')
+        );
+        //getInitialState方法用于定义初始状态，也是一个对象，这个对象可以通过this.state属性读取
+        //当用户点击组件，this.setState方法就修改状态值，每次修改以后，自动调用this.render方法，再次渲染组件
+        //this.props和this.state都用于描述组件特性，区分：
+        //this.props表示那些一旦定义，就不再改变的特性
+        //this.state是会随着用户互动而产生改变的特性
+        var Input = React.createClass({
+            getInitalState: function () {
+                return {value: 'Hello!'};
+            },
+            handleChange: function (event) {
+                this.setState({value: event.target.value});
+            },
+            render: function () {
+                var value = this.state.value;
+                return (
+                    <div>
+                        <input type="text" value={value} onChange={this.handleChange} />
+                        <p>{value}</p>
+                    </div>
+                );
+            }
+        });
+        ReactDOM.render(
+            <input />,
+            document.getElementById('example2')
+        );
+    </script>
+</body>
+</html>

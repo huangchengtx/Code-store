@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ReactDOM.render()</title>
+    <title>组件</title>
     <script src="../js/15.4.2/react.min.js"></script>
     <script src="../js/15.4.2/react-dom.min.js"></script>
     <script src="../js/15.4.2/babel.min.js"></script>
@@ -13,10 +13,18 @@
 <body>
     <div id="example"> </div>
     <script type="text/babel">
+        var HelloMessage = React.createClass({
+            render: function () {
+                return <h1>Hello {this.props.name}</h1>;
+            }
+        });
         ReactDOM.render(
-            <h1>Hello, World!</h1>,
+            <HelloMessage name="John" />,
             document.getElementById("example")
         );
+        //1、组件类的第一个字母必须大写，否则会报错
+        //2、组件类只能包含一个顶层标签，否则会报错
+        //添加组件属性，class属性需要写成className，for属性需要写成htmlFor，因为class和for是JavaScript的保留字
     </script>
 </body>
 </html>

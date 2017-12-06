@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>获取真实的DOM节点</title>
+    <script src="../js/15.4.2/react.min.js"></script>
+    <script src="../js/15.4.2/react-dom.min.js"></script>
+    <script src="../js/15.4.2/babel.min.js"></script>
+</head>
+<body>
+    <script type="text/babel">
+        var MyComponent = React.createClass({
+            handleClick: function () {
+                this.refs.myTextInput.focus();
+            },
+            render: function () {
+                return(
+                    <div>
+                        <input type="text" ref="myTextInput" />
+                        <input type="button" value="Focus the text input" onClick="{this.handleClick}" />
+                    </div>
+                );
+            }
+        });
+        ReactDOM.render(
+            <MyComponent />,
+            document.body
+        );
+        //虚拟DOM是获取不到用户输入，this.refs.[refName]可以返回真实的DOM节点
+    </script>
+</body>
+</html>

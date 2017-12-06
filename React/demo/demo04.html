@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>this.props.children</title>
+    <script src="../js/15.4.2/react.min.js"></script>
+    <script src="../js/15.4.2/react-dom.min.js"></script>
+    <script src="../js/15.4.2/babel.min.js"></script>
+</head>
+<body>
+    <!--<div id="example"> </div>-->
+    <script type="text/babel">
+        //this.props.children表示组件的所有子节点
+        var NotesList = React.createClass({
+            render: function () {
+                return (
+                    <ol>
+                        {
+                            React.Children.map(this.props.children, function (child) {
+                                return <li>{child}</li>;
+                            })
+                        }
+                    </ol>
+                );
+            }
+        });
+        ReactDOM.render(
+            <NotesList>
+                <span>hello</span>
+                <span>world</span>
+            </NotesList>,
+            document.body
+        );
+    </script>
+</body>
+</html>
